@@ -1,0 +1,8 @@
+schema_version: 1
+# Every non-generated asset (music, images, fonts, logos) with its licence.
+assets: []
+#  - path: channel/assets/music/bed-01.mp3
+#    kind: music
+#    source_url: ""
+#    license: "CC BY 4.0"       # must allow commercial use
+#    attribution: ""            # copied into the description if required

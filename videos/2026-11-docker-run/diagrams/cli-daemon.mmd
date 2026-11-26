@@ -1,0 +1,3 @@
+flowchart LR
+  you([You]) -->|docker run| cli[docker CLI<br/>client]
+  cli -->|REST API over<br/>/var/run/docker.sock| d[dockerd<br/>daemon]

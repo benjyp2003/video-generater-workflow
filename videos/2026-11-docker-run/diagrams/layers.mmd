@@ -1,0 +1,7 @@
+flowchart TB
+  w["Writable container layer (per container)"]
+  l3["Image layer 3 (read-only)"]
+  l2["Image layer 2 (read-only)"]
+  l1["Base layer (read-only)"]
+  w --- l3 --- l2 --- l1
+  style w stroke:#22C55E,stroke-width:3px
