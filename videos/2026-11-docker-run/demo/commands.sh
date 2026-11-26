@@ -6,4 +6,4 @@ docker run --rm hello-world
 docker info --format 'storage={{.Driver}} runtime={{.DefaultRuntime}} cgroup={{.CgroupVersion}}'
 docker network inspect bridge --format '{{.Name}} {{(index .IPAM.Config 0).Subnet}}'
 docker run --rm alpine:3.20 sh -c 'echo "PID inside: $$"; ls /proc | grep -E "^[0-9]+$"'
-docker run --rm alpine:3.20 ip -brief addr
+docker run --rm alpine:3.20 ip addr show
