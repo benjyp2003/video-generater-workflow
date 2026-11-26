@@ -1,0 +1,18 @@
+schema_version: 1
+platform: youtube
+title: ""
+title_alternatives: []
+description: |
+  
+
+  Versions shown:
+  Sources:
+tags: []
+category: Education
+language: en
+visibility: private          # ALWAYS private at upload; a human flips it
+made_for_kids: false
+altered_or_synthetic: null   # decide per video: true | false (see YouTube policy)
+thumbnail: thumbnail.png
+captions: final.srt
+playlist: ""
