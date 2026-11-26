@@ -10,7 +10,7 @@ PY ?= python3
 SHELL := /bin/bash
 # FORCE=1 re-renders even when outputs are newer than sources.
 
-.PHONY: help new check log test lint visuals diagrams slides terminal demo audio storyboard video draft
+.PHONY: help new check log test lint visuals diagrams slides terminal demo audio storyboard video draft subs
 
 help: ## Show targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  %-12s %s\n", $$1, $$2}'
@@ -58,3 +58,6 @@ draft: require-v ## Animatic: media/build/draft.mp4 with placeholders for missin
 
 video: require-v ## Final assembly -> media/build/final.mp4 (fails on missing inputs)
 	$(PY) -m tools.assemble $(V) $(if $(FORCE),--force)
+
+subs: require-v ## Captions -> final.srt  [MODE=whisper] [INPUT=file.mp4]
+	$(PY) -m tools.subtitles $(V) $(if $(MODE),--mode $(MODE)) $(if $(INPUT),--input $(INPUT))
