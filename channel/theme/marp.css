@@ -19,3 +19,8 @@ table { font-size: 38px; border-collapse: collapse; }
 th { background: #1E293B; color: #38BDF8; }
 td, th { border: 2px solid #334155; padding: 16px 28px; }
 section.short { width: 1080px; height: 1920px; padding: 120px 80px; }
+
+/* The default theme paints table rows white/grey; keep them on-brand. */
+table tr, table tr:nth-child(2n), table td { background-color: #0F172A; color: #F8FAFC; }
+table thead tr, table th { background-color: #1E293B; }
+table { margin-top: 32px; }
