@@ -1,0 +1,11 @@
+# Caption fixes applied after speech-to-text: wrong -> right (case-insensitive match).
+"container d": containerd
+"container-dee": containerd
+"run c": runc
+"run see": runc
+"docker d": dockerd
+"see groups": cgroups
+"c groups": cgroups
+"cube control": kubectl
+"cube cuddle": kubectl
+"engine x": Nginx
