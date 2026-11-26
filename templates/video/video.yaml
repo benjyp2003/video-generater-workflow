@@ -1,0 +1,35 @@
+schema_version: 1
+id: __ID__
+title_working: "__TITLE__"
+format: __FORMAT__           # concept | tutorial | comparison | architecture | short
+status: idea                 # idea|research|scripting|approved|production|qa|published
+created: __DATE__
+audience: ""
+target_length_min: 8
+keywords: []
+
+tech_versions: {}            # e.g. docker_engine: "29.0.1" — copy from demo/logs
+
+providers:
+  llm: chat-ui               # free text until Stage 2
+  tts: kokoro                # kokoro | human | elevenlabs
+  tts_voice: af_heart
+  tts_speed: 1.0
+  stt: small                 # faster-whisper model size
+
+approvals:                   # human gates — fill by hand, never automatically
+  technical: null            # {by: me, at: YYYY-MM-DD, notes: ""}
+  final_qa: null
+  publish: null
+
+publish:
+  youtube_id: null
+  published_at: null
+  ai_disclosure: null        # reviewed-not-required | disclosed
+
+metrics:
+  production_minutes: null
+  cost_usd: null
+  corrections_after_publish: 0
+  d7:  {views: null, ctr: null, avg_view_pct: null}
+  d28: {views: null, ctr: null, avg_view_pct: null, subs_gained: null}
