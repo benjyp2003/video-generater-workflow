@@ -11,5 +11,9 @@
     "fontFamily": "Inter, Helvetica, Arial, sans-serif",
     "fontSize": "22px"
   },
-  "flowchart": { "curve": "basis", "padding": 20 }
+  "flowchart": {
+    "curve": "basis",
+    "padding": 20,
+    "wrappingWidth": 420
+  }
 }
