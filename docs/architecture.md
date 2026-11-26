@@ -1,6 +1,6 @@
 # AI-Assisted Technical Video Production System — Architecture
 
-> Status: Proposal v1 · Date: 2026-11-26 · Owner: solo creator
+> Status: Accepted v1, Stage 0 + Stage 1 implemented (see §P) · Date: 2026-11-26 · Owner: solo creator
 > Scope: design only. Nothing here provisions infrastructure, buys services, or publishes content.
 
 ---
@@ -859,3 +859,42 @@ Review `production-log.csv` every 3 videos:
 - YouTube Data API quota: https://developers.google.com/youtube/v3/determine_quota_cost · https://developers.google.com/youtube/v3/docs/videos/insert
 - YouTube altered/synthetic disclosure: https://support.google.com/youtube/answer/14328491
 - Piper licensing (secondary source, not verified against Piper's repo): https://www.assemblyai.com/blog/free-open-source-text-to-speech
+
+---
+
+## P. Implementation Notes (2026-11-26)
+
+Implemented: the E.1 Stage 0 layout, the Stage 1 tools (E.2), and the safety
+checks from N, all behind the Makefile. Stage 2 and 3 items are **not** built.
+
+| Capability | Implementation | Verified here |
+|------------|----------------|---------------|
+| Project init | `tools/new_video.sh` (`make new`) | ✅ tests + video 1 |
+| Claim coverage (Gate 1 helper) | `tools/check_claims.py` | ✅ tests; blocks video 1 as expected |
+| Diagrams / slides | Mermaid CLI 12.2.0, Marp CLI 4.5.1 (pinned in package-lock) | ✅ video 1 rendered |
+| Terminal recordings | VHS tapes (`make terminal`) | ⚠️ VHS not installed here; untested |
+| Narration | `tools/tts.py`: kokoro / placeholder / human, per-scene fingerprints | ✅ placeholder; ⚠️ Kokoro install OK, synthesis untested (model host blocked in this environment) |
+| Storyboard + assembly | `tools/storyboard.py`, `tools/assemble.py` (FFmpeg) | ✅ tests + 5-min animatic of video 1 |
+| Subtitles | `tools/subtitles.py`: script-aligned (default) or faster-whisper | ✅ script mode; ⚠️ whisper untested (same reason) |
+| Sandbox demos | `demo/run.sh` in docker:dind, `SANDBOX_CA_FILE` for TLS proxies | ✅ video 1 demo ran; caught a real command bug |
+| Preflight (Gates 2/3) | `tools/preflight.py` | ✅ tests |
+| Secrets / large files | pre-commit: gitleaks v8.29.1, pre-commit-hooks v5.0.0 | ✅ all hooks pass |
+
+Design changes made during implementation:
+- **Storyboard is generated, overrides are authored.** `storyboard.yaml` is
+  gitignored; hand edits live in `storyboard.overrides.yaml`. This keeps script.md
+  as the single source of truth (refines F.4).
+- **Subtitles default to the script, not STT.** For TTS videos the exact text and
+  scene timing are already known, so no model is needed and jargon is always
+  spelled right. Whisper stays for human narration and hand-edited videos.
+- **A `placeholder` TTS provider** produces timed silence. It lets you review
+  pacing and assembly (`make draft`) before choosing a voice.
+- **Segment fingerprints include the renderer's code.** Changing the assembler
+  re-renders cached segments. A stale-cache bug found during testing prompted this.
+- Mermaid CLI 12 replaced `-w/-H` with `--size`. Kokoro 0.9 requires Python ≤ 3.12.
+
+Findings from video 1 that feed back into content:
+- The sandbox's Engine 29.10.1 uses the **containerd image store** (`overlayfs`),
+  not `overlay2`. The script says "an overlay filesystem" (claim C5).
+- The default bridge subnet differs per machine (172.18.0.0/16 here). Never state a
+  fixed range.
