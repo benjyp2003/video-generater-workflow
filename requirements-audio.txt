@@ -1,0 +1,11 @@
+# Local speech: TTS (Kokoro) and STT (faster-whisper). CPU is fine; a GPU is faster.
+# - Kokoro 0.9.x currently needs Python 3.10-3.12 (on 3.13 pip falls back to an old 0.7).
+# - Kokoro needs espeak-ng from your OS package manager (apt install espeak-ng).
+# - First run downloads model weights from huggingface.co (Kokoro) and the
+#   Whisper model (faster-whisper); afterwards everything runs offline.
+# Tip for a CPU-only PyTorch (much smaller download), install torch first:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+-r requirements.txt
+kokoro>=0.9.4,<1
+soundfile>=0.12
+faster-whisper>=1.1,<2
