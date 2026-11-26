@@ -1,6 +1,7 @@
-# Rename to <name>.tape to enable. Referenced from script.md as terminal:<name>.
-# Docs: https://github.com/charmbracelet/vhs
-Output example.mp4
+# Reproducible terminal recording for scenes s01 and s09.
+# Rendered with: make terminal V=videos/2026-11-docker-run
+# Runs on the recording machine: only use inside a disposable VM/sandbox.
+Output run-hello.mp4
 Set FontFamily "JetBrains Mono"
 Set FontSize 28
 Set Width 1920
@@ -13,4 +14,4 @@ Env PS1 "user@demo:~$ "
 Type "docker run --rm hello-world"
 Sleep 500ms
 Enter
-Sleep 6s
+Sleep 8s
