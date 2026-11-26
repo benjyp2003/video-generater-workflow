@@ -2,11 +2,11 @@ schema_version: 1
 id: 2026-11-docker-run
 title_working: "What happens when you run docker run?"
 format: concept           # concept | tutorial | comparison | architecture | short
-status: idea                 # idea|research|scripting|approved|production|qa|published
+status: scripting                 # idea|research|scripting|approved|production|qa|published
 created: 2026-11-26
-audience: ""
+audience: "beginners who have installed Docker but don't know how it works"
 target_length_min: 8
-keywords: []
+keywords: [docker run, docker architecture, containerd, runc, namespaces, cgroups]
 
 tech_versions: {}            # e.g. docker_engine: "29.0.1" — copy from demo/logs
 
