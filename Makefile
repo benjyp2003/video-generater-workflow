@@ -7,8 +7,9 @@
 
 PY ?= python3
 SHELL := /bin/bash
+# FORCE=1 re-renders even when outputs are newer than sources.
 
-.PHONY: help new check log test lint
+.PHONY: help new check log test lint visuals diagrams slides terminal demo
 
 help: ## Show targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  %-12s %s\n", $$1, $$2}'
@@ -30,3 +31,17 @@ test: ## Run tool tests
 
 lint: ## Shellcheck scripts (if installed)
 	@command -v shellcheck >/dev/null && shellcheck tools/*.sh templates/video/demo/*.sh || echo "shellcheck not installed; skipped"
+
+diagrams: require-v ## Render diagrams/*.mmd -> media/visuals/*.png
+	tools/render_diagrams.sh $(V) $(if $(FORCE),--force,)
+
+slides: require-v ## Render slides/*.md (Marp) -> media/visuals/*.png
+	tools/render_slides.sh $(V) $(if $(FORCE),--force,)
+
+terminal: require-v ## Render demo/*.tape (VHS) -> media/visuals/*.mp4
+	tools/render_terminal.sh $(V) $(if $(FORCE),--force,)
+
+visuals: diagrams slides ## Diagrams + slides (terminal is separate: needs vhs)
+
+demo: require-v ## Run demo/commands.sh in the disposable sandbox, log to demo/logs/
+	$(V)/demo/run.sh

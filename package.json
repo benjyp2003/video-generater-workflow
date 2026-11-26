@@ -1,0 +1,9 @@
+{
+  "name": "studio-render-tools",
+  "private": true,
+  "description": "Pinned Node-based renderers (diagrams, slides). Install with: npm ci",
+  "devDependencies": {
+    "@marp-team/marp-cli": "4.5.1",
+    "@mermaid-js/mermaid-cli": "12.2.0"
+  }
+}
