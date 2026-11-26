@@ -1,0 +1,27 @@
+# Install once:  pip install pre-commit && pre-commit install
+# Blocks the most likely real incidents: committed secrets and huge media files.
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.29.1
+    hooks:
+      - id: gitleaks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-yaml
+      - id: check-added-large-files
+        args: [--maxkb=2048]
+      - id: detect-private-key
+      - id: end-of-file-fixer
+        exclude: \.srt$
+      - id: trailing-whitespace
+        exclude: \.(md|srt)$
+  - repo: local
+    hooks:
+      - id: tool-tests
+        name: tool tests
+        entry: pytest -q tests
+        language: python
+        additional_dependencies: [pytest>=8.0, PyYAML>=6.0]
+        pass_filenames: false
+        files: ^(tools|tests)/
