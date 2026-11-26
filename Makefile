@@ -10,7 +10,7 @@ PY ?= python3
 SHELL := /bin/bash
 # FORCE=1 re-renders even when outputs are newer than sources.
 
-.PHONY: help new check log test lint visuals diagrams slides terminal demo audio
+.PHONY: help new check log test lint visuals diagrams slides terminal demo audio storyboard video draft
 
 help: ## Show targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  %-12s %s\n", $$1, $$2}'
@@ -49,3 +49,12 @@ demo: require-v ## Run demo/commands.sh in the disposable sandbox, log to demo/l
 
 audio: require-v ## Narration per scene: [SCENES=s01,s02] [PROVIDER=placeholder] [FORCE=1]
 	$(PY) -m tools.tts $(V) $(if $(SCENES),--scenes $(SCENES)) $(if $(PROVIDER),--provider $(PROVIDER)) $(if $(FORCE),--force)
+
+storyboard: require-v ## Generate storyboard.yaml from script.md (+ overrides)
+	$(PY) -m tools.storyboard $(V)
+
+draft: require-v ## Animatic: media/build/draft.mp4 with placeholders for missing inputs
+	$(PY) -m tools.assemble $(V) --draft $(if $(FORCE),--force)
+
+video: require-v ## Final assembly -> media/build/final.mp4 (fails on missing inputs)
+	$(PY) -m tools.assemble $(V) $(if $(FORCE),--force)
