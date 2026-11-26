@@ -1,0 +1,34 @@
+# --- Secrets: never commit ---------------------------------------------------
+.env
+*.env
+!.env.example
+client_secret*.json
+*token*.json
+*.pem
+*.key
+
+# --- Generated / large media (reproducible or backed up elsewhere) ----------
+videos/*/media/
+*.mp4
+*.mov
+*.mkv
+*.wav
+*.flac
+*.mp3
+!channel/assets/**/*.mp3
+*.kdenlive.bak
+videos/*/.state.json
+videos/*/storyboard.yaml
+
+# --- Python / tooling --------------------------------------------------------
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+node_modules/
+
+# --- OS / editor -------------------------------------------------------------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

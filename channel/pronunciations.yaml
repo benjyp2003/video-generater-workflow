@@ -1,0 +1,9 @@
+# Respellings applied to narration text before TTS (not to captions).
+# Keys are matched as whole words, case-sensitive.
+containerd: container-dee
+runc: run-see
+dockerd: docker-dee
+kubectl: cube-control
+cgroups: see-groups
+Nginx: engine-x
+YAML: yammel
