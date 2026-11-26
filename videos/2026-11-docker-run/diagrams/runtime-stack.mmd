@@ -1,0 +1,2 @@
+flowchart LR
+  cli[docker CLI] --> d[dockerd] --> c[containerd] --> s[shim] --> r[runc] --> k[(Linux kernel<br/>namespaces + cgroups)]

@@ -1,0 +1,10 @@
+flowchart TB
+  k[(One shared Linux kernel)]
+  subgraph container[Container process]
+    pid[PID: own process list]
+    net[NET: own interfaces]
+    mnt[MNT: own filesystem view]
+    uts[UTS: own hostname]
+    ipc[IPC: own message queues]
+  end
+  container --> k

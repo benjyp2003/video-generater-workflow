@@ -1,0 +1,6 @@
+flowchart LR
+  subgraph c[Container network namespace]
+    eth0[eth0]
+  end
+  eth0 ---|veth pair| veth[vethXXXX]
+  veth --- br[docker0 bridge] --- host[Host network] --> net((Internet))
