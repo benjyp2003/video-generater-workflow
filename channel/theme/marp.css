@@ -1,0 +1,21 @@
+/* @theme studio */
+@import 'default';
+
+section {
+  width: 1920px;
+  height: 1080px;
+  background: #0F172A;
+  color: #F8FAFC;
+  font-family: Inter, Helvetica, Arial, sans-serif;
+  font-size: 44px;
+  padding: 96px 120px;
+}
+h1 { color: #F8FAFC; font-size: 96px; line-height: 1.1; }
+h2 { color: #38BDF8; font-size: 64px; }
+strong { color: #38BDF8; }
+em { color: #F59E0B; font-style: normal; }
+code { font-family: "JetBrains Mono", monospace; background: #1E293B; color: #F8FAFC; padding: 0 .3em; border-radius: 6px; }
+table { font-size: 38px; border-collapse: collapse; }
+th { background: #1E293B; color: #38BDF8; }
+td, th { border: 2px solid #334155; padding: 16px 28px; }
+section.short { width: 1080px; height: 1920px; padding: 120px 80px; }
