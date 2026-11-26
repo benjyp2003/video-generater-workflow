@@ -8,7 +8,12 @@ audience: "beginners who have installed Docker but don't know how it works"
 target_length_min: 8
 keywords: [docker run, docker architecture, containerd, runc, namespaces, cgroups]
 
-tech_versions: {}            # e.g. docker_engine: "29.0.1" — copy from demo/logs
+tech_versions:               # from demo/logs/20261126-212151.log (docker:dind sandbox)
+  docker_engine: "29.10.1"
+  containerd: "v2.4.2"
+  runc: "1.5.3"
+  storage_driver: "overlayfs (containerd image store)"
+  # Re-record from your own demo machine before publishing.
 
 providers:
   llm: chat-ui               # free text until Stage 2
