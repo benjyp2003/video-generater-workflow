@@ -10,7 +10,7 @@ PY ?= python3
 SHELL := /bin/bash
 # FORCE=1 re-renders even when outputs are newer than sources.
 
-.PHONY: help new check log test lint visuals diagrams slides terminal demo audio storyboard video draft subs
+.PHONY: help new check log test lint visuals diagrams slides terminal demo audio storyboard video draft subs preflight
 
 help: ## Show targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  %-12s %s\n", $$1, $$2}'
@@ -61,3 +61,6 @@ video: require-v ## Final assembly -> media/build/final.mp4 (fails on missing in
 
 subs: require-v ## Captions -> final.srt  [MODE=whisper] [INPUT=file.mp4]
 	$(PY) -m tools.subtitles $(V) $(if $(MODE),--mode $(MODE)) $(if $(INPUT),--input $(INPUT))
+
+preflight: require-v ## Gate 2/3 helper: approvals, metadata, files, licences, secrets
+	$(PY) -m tools.preflight $(V)
