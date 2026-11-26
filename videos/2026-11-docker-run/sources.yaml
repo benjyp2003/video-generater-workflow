@@ -1,8 +1,70 @@
 schema_version: 1
-sources: []
-#  - id: S1
-#    title: ""
-#    url: ""
-#    type: official_docs     # official_docs | spec | source_code | man_page | blog | video
-#    accessed: YYYY-MM-DD
-#    version: ""
+# Candidate primary sources drafted for research. Open each one, confirm it says
+# what the claim needs, fill `accessed` and `version`, fix any URL that moved.
+sources:
+  - id: S1
+    title: "What is Docker? — Docker architecture (client, daemon, registries)"
+    url: https://docs.docker.com/get-started/docker-overview/
+    type: official_docs
+    accessed: null
+    version: null
+  - id: S2
+    title: "docker container run — CLI reference"
+    url: https://docs.docker.com/reference/cli/docker/container/run/
+    type: official_docs
+    accessed: null
+    version: null
+  - id: S3
+    title: "Docker daemon / dockerd reference (default socket)"
+    url: https://docs.docker.com/reference/cli/dockerd/
+    type: official_docs
+    accessed: null
+    version: null
+  - id: S4
+    title: "containerd — documentation"
+    url: https://containerd.io/docs/
+    type: official_docs
+    accessed: null
+    version: null
+  - id: S5
+    title: "runc — CLI tool for spawning containers per the OCI spec"
+    url: https://github.com/opencontainers/runc
+    type: source_code
+    accessed: null
+    version: null
+  - id: S6
+    title: "OCI Runtime Specification"
+    url: https://github.com/opencontainers/runtime-spec
+    type: spec
+    accessed: null
+    version: null
+  - id: S7
+    title: "namespaces(7) — Linux manual page"
+    url: https://man7.org/linux/man-pages/man7/namespaces.7.html
+    type: man_page
+    accessed: null
+    version: null
+  - id: S8
+    title: "cgroups(7) — Linux manual page"
+    url: https://man7.org/linux/man-pages/man7/cgroups.7.html
+    type: man_page
+    accessed: null
+    version: null
+  - id: S9
+    title: "OverlayFS storage driver — Docker docs"
+    url: https://docs.docker.com/engine/storage/drivers/overlayfs-driver/
+    type: official_docs
+    accessed: null
+    version: null
+  - id: S10
+    title: "Bridge network driver — Docker docs"
+    url: https://docs.docker.com/engine/network/drivers/bridge/
+    type: official_docs
+    accessed: null
+    version: null
+  - id: S11
+    title: "containerd image store with Docker Engine"
+    url: https://docs.docker.com/engine/storage/containerd/
+    type: official_docs
+    accessed: null
+    version: null
