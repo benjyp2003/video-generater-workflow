@@ -5,11 +5,12 @@
 #   make check V=videos/2026-12-docker-run
 #   make help
 
+# Point PY at a venv for the audio tools, e.g. PY=.venv/bin/python
 PY ?= python3
 SHELL := /bin/bash
 # FORCE=1 re-renders even when outputs are newer than sources.
 
-.PHONY: help new check log test lint visuals diagrams slides terminal demo
+.PHONY: help new check log test lint visuals diagrams slides terminal demo audio
 
 help: ## Show targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  %-12s %s\n", $$1, $$2}'
@@ -45,3 +46,6 @@ visuals: diagrams slides ## Diagrams + slides (terminal is separate: needs vhs)
 
 demo: require-v ## Run demo/commands.sh in the disposable sandbox, log to demo/logs/
 	$(V)/demo/run.sh
+
+audio: require-v ## Narration per scene: [SCENES=s01,s02] [PROVIDER=placeholder] [FORCE=1]
+	$(PY) -m tools.tts $(V) $(if $(SCENES),--scenes $(SCENES)) $(if $(PROVIDER),--provider $(PROVIDER)) $(if $(FORCE),--force)
